@@ -9,9 +9,15 @@ private int weaponSkill;
 private int ballisticSkill;
 private String chapter;
 
-public SpaceMarine(long id, String name, String weapon, int weaponSkill, int ballisticSkill, String chapter) {
+
+
+@Override
+public String toString() {
+	return "SpaceMarine [id=" + id + ", name=" + name + ", weapon=" + weapon + ", weaponSkill=" + weaponSkill
+			+ ", ballisticSkill=" + ballisticSkill + ", chapter=" + chapter + "]";
+}
+public SpaceMarine(String name, String weapon, int weaponSkill, int ballisticSkill, String chapter) {
 	super();
-	this.id = id;
 	this.name = name;
 	this.weapon = weapon;
 	this.weaponSkill = weaponSkill;
