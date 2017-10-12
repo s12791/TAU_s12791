@@ -11,7 +11,6 @@ import s12791.domain.SpaceMarine;
 public class SpaceMarineManagerTest extends TestCase {
 
 SpaceMarineManager spaceMarineManager = new SpaceMarineManagerImpl();
-
 	@Test
 	public void testCreateSpaceMarine() throws Exception{
 		SpaceMarine sm1= new SpaceMarine("Gabriel", "Thunder Hammer", 5, 5, "Blood Ravens");
