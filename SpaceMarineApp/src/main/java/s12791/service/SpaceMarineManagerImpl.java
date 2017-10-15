@@ -23,13 +23,15 @@ public class SpaceMarineManagerImpl implements SpaceMarineManager{
 		return spaceMarine;
 	}
 
-	public int updateSpaceMarine(SpaceMarine spaceMarine,int id) {
+	public int updateSpaceMarine(SpaceMarine spaceMarine,int id) throws IndexOutOfBoundsException {
 		if (treeMapDb.containsKey(id)) {
 			treeMapDb.remove(id);
 			spaceMarine.setId(id);
 			treeMapDb.put(id,spaceMarine);
-			
 		}
+		else throw new IndexOutOfBoundsException();
+		
+		
 		return treeMapDb.size();
 	}
 

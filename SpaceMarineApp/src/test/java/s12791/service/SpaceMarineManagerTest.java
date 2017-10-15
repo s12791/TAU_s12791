@@ -1,17 +1,25 @@
 package s12791.service;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import junit.framework.AssertionFailedError;
 import junit.framework.TestCase;
 import s12791.domain.SpaceMarine;
 
 @RunWith(JUnit4.class)
 public class SpaceMarineManagerTest extends TestCase {
 
+	@Rule
+    public ExpectedException exceptions = ExpectedException.none();
+	
 	SpaceMarineManager spaceMarineManager = new SpaceMarineManagerImpl();
 
+	
+	
 	@Test
 	public void testCreateSpaceMarine() throws Exception {
 		SpaceMarine sm1 = new SpaceMarine("Gabriel", "Thunder Hammer", 5, 5, "Blood Ravens");
@@ -29,7 +37,7 @@ public class SpaceMarineManagerTest extends TestCase {
 		assertEquals("Blood Ravens", spaceMarineManager.getSpaceMarine(0).getChapter());
 	}
 
-	@Test
+	@Test 
 	public void testUpdateSpaceMarine() throws Exception {
 		SpaceMarine sm3 = new SpaceMarine("Tarkus", "Bolter", 4, 4, "Blood Ravens");
 		SpaceMarine sm4 = new SpaceMarine("Thaddeus", "Chainsword", 4, 4, "Blood Ravens");
@@ -43,6 +51,18 @@ public class SpaceMarineManagerTest extends TestCase {
 		assertEquals(4, spaceMarineManager.getSpaceMarine(0).getBallisticSkill());
 		assertEquals(4, spaceMarineManager.getSpaceMarine(0).getWeaponSkill());
 		assertEquals("Blood Ravens", spaceMarineManager.getSpaceMarine(0).getChapter());
+		
+	
+	}
+	
+	@Test (expected = IndexOutOfBoundsException.class)
+	public void testUpdateSpaceMarineExc() throws Exception {
+		SpaceMarine sm3 = new SpaceMarine("Tarkus", "Bolter", 4, 4, "Blood Ravens");
+		spaceMarineManager.createSpaceMarine(sm3);
+
+		//updateSpaceMarine(SpaceMarine spaceMarine,int id)
+		spaceMarineManager.updateSpaceMarine(spaceMarineManager.getSpaceMarine(0), 3);
+		
 	}
 
 	@Test
