@@ -1,8 +1,13 @@
 package s12791.service;
 
+import java.rmi.NoSuchObjectException;
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.regex.Pattern;
+
+import org.mockito.exceptions.misusing.NullInsteadOfMockException;
 
 import s12791.domain.SpaceMarine;
 
@@ -40,8 +45,13 @@ public class SpaceMarineAction {
 	 * @param spaceMarinesToRemove
 	 * @return information if all SpaceMarine-s were successfully deleted.
 	 */
-	public boolean deleteSpaceMarines(List<SpaceMarine> spaceMarinesToDelete) throws NullPointerException {
+	public boolean deleteSpaceMarines(List<SpaceMarine> spaceMarinesToDelete) {
+		if (spaceMarinesToDelete == null) {
+			throw new IllegalArgumentException("list must not be null");
+		}
+		
 		boolean successfulDelete = true;
+		
 		for (SpaceMarine spaceMarine : spaceMarinesToDelete) {
 			boolean result = spaceMarineDao.deleteSpaceMarine(spaceMarine.getId());
 			if (result == false) {
