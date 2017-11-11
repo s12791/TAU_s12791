@@ -1,13 +1,8 @@
 package s12791.service;
 
-import java.rmi.NoSuchObjectException;
 import java.util.ArrayList;
-import java.util.EmptyStackException;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.regex.Pattern;
-
-import org.mockito.exceptions.misusing.NullInsteadOfMockException;
 
 import s12791.domain.SpaceMarine;
 
