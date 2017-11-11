@@ -23,4 +23,5 @@ os:
   - windows
 install: true
 script:
-  - cd pingPong && mvn test
+  - d:
+  - cd Kamil\PJWSTK\PJWSTK_REPO2\SpaceMarineApp2 && mvn test
