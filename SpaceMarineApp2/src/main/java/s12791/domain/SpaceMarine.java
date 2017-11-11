@@ -1,6 +1,7 @@
 package s12791.domain;
 
 public class SpaceMarine {
+
 	private long id;
 	private String name;
 	private String weapon;
@@ -23,7 +24,6 @@ public class SpaceMarine {
 	}
 
 	public SpaceMarine() {
-
 	}
 
 	public long getId() {
@@ -73,6 +73,5 @@ public class SpaceMarine {
 	public void setChapter(String chapter) {
 		this.chapter = chapter;
 	}
-
 
 }
