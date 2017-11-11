@@ -23,4 +23,4 @@ os:
   - windows
 install: true
 script:
-  - cd SpaceMarineApp && mvn test
+  - cd SpaceMarineApp2 && mvn test
