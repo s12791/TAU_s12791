@@ -23,5 +23,4 @@ os:
   - windows
 install: true
 script:
-  - d:
-  - cd Kamil\PJWSTK\PJWSTK_REPO2\SpaceMarineApp2 && mvn test
+  - cd SpaceMarineApp2 && mvn test
