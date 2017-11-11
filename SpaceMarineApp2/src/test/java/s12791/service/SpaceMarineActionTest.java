@@ -4,6 +4,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -12,6 +13,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Matchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.exceptions.misusing.WrongTypeOfReturnValue;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import s12791.domain.SpaceMarine;
@@ -72,7 +74,7 @@ public class SpaceMarineActionTest {
 	}
 
 	@Test
-	public void deleteSpaceMarinesTestWhenDeleteSuccessful() {
+	public void deleteSpaceMarinesTestWhenDeleteSuccessful() throws NoSuchElementException {
 
 		List<SpaceMarine> mySmList = new ArrayList<SpaceMarine>();
 		mySmList.add(sm1);
@@ -92,7 +94,7 @@ public class SpaceMarineActionTest {
 	}
 
 	@Test
-	public void deleteSpaceMarinesTestWhenPartiallySuccessful() {
+	public void deleteSpaceMarinesTestWhenPartiallySuccessful() throws NoSuchElementException {
 		List<SpaceMarine> mySmList = new ArrayList<SpaceMarine>();
 		mySmList.add(sm1);
 		mySmList.add(sm2);
@@ -109,12 +111,13 @@ public class SpaceMarineActionTest {
 		Mockito.verify(mockedSpaceMarineDao, Mockito.times(3)).deleteSpaceMarine(Mockito.anyLong());
 	}
 
-	@Test(expected = NullPointerException.class)
-	public void deleteSpaceMarinesTestWhenNullInput() {
+	@Test(expected = WrongTypeOfReturnValue.class)
+	public void deleteSpaceMarinesTestWhenNullInput(){
 		List<SpaceMarine> mySmList = null;
-		when(mockedSpaceMarineDao.deleteSpaceMarine(Matchers.eq(sm1.getId()))).thenReturn(false);
+		when(mockedSpaceMarineDao.deleteSpaceMarine(Matchers.eq(sm1.getId()))).thenReturn(null);
 
 		// test
 		spaceMarineAction.deleteSpaceMarines(mySmList);
+		Assert.fail("exception expected");
 	}
 }
