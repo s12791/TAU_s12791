@@ -9,8 +9,9 @@
 	<url>http://maven.apache.org</url>
 	
    <properties>  
+   <java.version>1.8</java.version>
      <jbehave.version>3.8</jbehave.version>  
-     <junit.version>4.11</junit.version>  
+     <junit.version>4.12</junit.version>  
      <failsafe.and.surefire.version>2.16</failsafe.and.surefire.version>  
    </properties>  
    <dependencies>  
@@ -26,68 +27,17 @@
      </dependency>  
    </dependencies>  
    <build>  
-     <plugins>  
-       <plugin>  
-         <groupId>org.apache.maven.plugins</groupId>  
-         <artifactId>maven-surefire-plugin</artifactId>  
-         <version>${failsafe.and.surefire.version}</version>  
-         <configuration>  
-         <testSourceDirectory>${basedir}src/test/java</testSourceDirectory>
-                    <testClassesDirectory>${project.build.directory}/classes/</testClassesDirectory>
-           <!-- Disable unit tests -->  
-           <skip>false</skip>  
-         </configuration>  
-       </plugin>  
-       <plugin>  
-         <groupId>org.apache.maven.plugins</groupId>  
-         <artifactId>maven-failsafe-plugin</artifactId>  
-         <version>${failsafe.and.surefire.version}</version>  
-         <executions>  
-           <execution>  
-             <id>integration-test</id>  
-             <goals>  
-               <goal>integration-test</goal>  
-               <goal>verify</goal>  
-             </goals>  
-           </execution>  
-         </executions>  
-         <configuration>  
-           <includes>  
-             <include>**/*Story.java</include>  
-           </includes>  
-         </configuration>  
-       </plugin>  
-       <plugin>  
-         <groupId>org.jbehave</groupId>  
-         <artifactId>jbehave-maven-plugin</artifactId>  
-         <version>${jbehave.version}</version>  
-         <executions>  
-           <execution>  
-             <id>run-stories-as-embeddables</id>  
-             <phase>integration-test</phase>  
-             <configuration>  
-               <testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
-               
-               <includes>  
-                 <include>**/*Story.java</include>  
-               </includes>  
-               <ignoreFailureInStories>false</ignoreFailureInStories>  
-               <ignoreFailureInView>false</ignoreFailureInView>  
-             </configuration>  
-             <goals>  
-               <goal>run-stories-as-embeddables</goal>  
-             </goals>  
-           </execution>  
-         </executions>  
-       </plugin>  
-     </plugins>  
-             <testResources>
-            <testResource>
-                <directory>src/test/java/</directory>
-                <includes>
-                    <include>**/*.Story</include>
-                </includes>
-            </testResource>
-        </testResources>
-   </build>  
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.20.1</version>
+        <configuration>
+          <includes>
+            <include>**/*Story.java</include>
+          </includes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build> 
 </project>
