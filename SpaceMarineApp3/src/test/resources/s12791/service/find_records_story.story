@@ -12,4 +12,13 @@ Scenario: Find specific record from all Space Marines
 Given a data source
 And several Space Marines
 When I'm looking for a Space Marine by regex
-Then at least one Space Marine object should be found
+|regex       |
+|Ultramarines|
+|Blood Ravens|
+
+Then objects should be found
+
+Examples: 
+|regex       | num |
+|Ultramarines|  1  |
+|Blood Ravens|  3  |

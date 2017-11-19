@@ -28,13 +28,13 @@ public class SpaceMarineTestSteps {
     	spaceMarineManagerImpl.createSpaceMarine(new SpaceMarine("Titus", "Power Axe", 5, 5, "Ultramarines"));
     }
 
-    @When("I'm looking for a Space Marine by regex")
-    public void lookingForRecordByRegex() throws NoSuchFieldException{
-        foundRecords = spaceMarineAction.findRecordsByRegex("Ultramarines");
+    @When("I'm looking for a Space Marine by regex $regex")
+    public void lookingForRecordByRegex(String regex) throws NoSuchFieldException{
+        foundRecords = spaceMarineAction.findRecordsByRegex(regex);
     }
 
-    @Then("at least one Space Marine object should be found")
-    public void recordShouldBeFound(){
+    @Then("Then objects should be found $num")
+    public void recordShouldBeFound(int num){
         Assert.assertTrue(foundRecords.size() >= 1);
     }
 }
